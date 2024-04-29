@@ -32,6 +32,7 @@ async function run() {
     await client.connect();
 
     const placeCollection = client.db('TouristSpotDB').collection('place');
+    const userCollection = client.db('TouristSpotDB').collection('user');
 
     app.get('/place', async(req, res) =>{
         const cursor = placeCollection.find();
@@ -90,6 +91,16 @@ async function run() {
 
     })
 
+    // user related apis
+
+app.post('/user', async(req, res)=>{
+
+    const user = req.body;
+    console.log(user);
+    const result = await userCollection.insertOne(user);
+    res.send(result);
+
+})
 
 
     // Send a ping to confirm a successful connection
