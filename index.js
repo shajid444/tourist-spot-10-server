@@ -31,8 +31,17 @@ async function run() {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
 
+
+    // For tourists place
     const placeCollection = client.db('TouristSpotDB').collection('place');
+
+
+    // For user
     const userCollection = client.db('TouristSpotDB').collection('user');
+
+
+
+    // place related apis
 
     app.get('/place', async(req, res) =>{
         const cursor = placeCollection.find();
